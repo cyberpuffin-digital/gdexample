@@ -1,3 +1,6 @@
+# GDExtension development
+extension_api.json
+
 # Godot 4+ specific ignores
 .godot/
 
