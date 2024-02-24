@@ -21,12 +21,12 @@ endif
 clean: ## Clear build artifacts and reinitialize submodules
 ifeq "$(origin OS)" "environment"
 	@git submodule deinit -f godot-cpp
-	@git clean -dfx
+	@git clean -dfx --exclude='.godot\'
 	@powershell -Command "& {Remove-Item -ErrorAction Ignore extension_api.json}";
 	@git submodule update --init --remote godot-cpp
 else
 	@git submodule deinit -f godot-cpp
-	@git clean -dfx
+	@git clean -dfx --exclude='.godot/'
 	@rm -rf extension_api.json;
 	@git submodule update --init --remote godot-cpp
 endif
