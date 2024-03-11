@@ -9,8 +9,9 @@ Example GDExtension derived from the [Official guide](https://docs.godotengine.o
 * Godot v4.2+
 * a C++ compiler
 * Build tools:
-  * Scons
-  * Make
+  * Scons - Godot and Godot-CPP requirement
+  * Make - Mainly for build command reference.  Commands can be run manually.
+  * CMake - Unit testing (doctest), seems to be a preferred tool.
 
 [Official list of prerequisites](https://docs.godotengine.org/en/stable/tutorials/scripting/gdextension/gdextension_cpp_example.html#setting-up-the-project)
 

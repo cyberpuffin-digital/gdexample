@@ -68,9 +68,16 @@ godot_cpp_windows_debug: extension_api_json ## Build Godot CPP in Windows with e
 -----: ## ----- GDExtension builds -----
 
 gdextension_linux_debug: ## Build GDExtensions (Debug) for Linux.
-	scons platform=linux target=template_debug arch=x86_32 debug_symbols=true
+	@#scons platform=linux target=template_debug arch=x86_32 debug_symbols=true
 	scons platform=linux target=template_debug arch=x86_64 debug_symbols=true
+	@echo "\nBuild the 32-bit extension manually to avoid tripping the stack smashing bug.\n\tscons platform=linux target=template_debug arch=x86_32 debug_symbols=true"
 
 gdextension_linux_release: ## Build GDExtensions (Release) for Linux.
 	scons platform=linux target=template_release arch=x86_32
 	scons platform=linux target=template_release arch=x86_64
+
+-----: ## ----- Tests -----
+
+tests: ## Run doctest unit tests for the GDExtension
+	cmake -S ./test -B ./.cmake
+	cmake --build ./.cmake

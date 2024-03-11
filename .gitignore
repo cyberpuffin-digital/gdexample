@@ -45,6 +45,10 @@ compile_commands.json
 *.idb
 *.exp
 
+# CMake build
+.cmake/**
+!.cmake/.gitkeep
+
 # Other stuff
 *.log
 
