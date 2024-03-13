@@ -40,7 +40,7 @@ bool GDExample::is_prime(int prime_candidate) {
 	  because if a number has a divisor larger than its square root, then it
 	  must also have a corresponding divisor smaller than its square root.
 	*/
-	int sqrt_candidate = sqrt(prime_candidate);
+	int sqrt_candidate = (int)sqrt(prime_candidate);
 	for (int divisor = 2; divisor <= sqrt_candidate; ++divisor) {
 		if (prime_candidate % divisor == 0) {
 			return false;
