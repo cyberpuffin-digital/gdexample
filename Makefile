@@ -80,4 +80,4 @@ gdextension_linux_release: ## Build GDExtensions (Release) for Linux.
 
 tests: ## Run doctest unit tests for the GDExtension
 	cmake -S ./test -B ./.cmake
-	cmake --build ./.cmake
+	cmake --build ./.cmake --verbose

@@ -1,15 +1,12 @@
 #!/usr/bin/env python
 import os
 
-
 def normalize_path(val, env):
     return val if os.path.isabs(val) else os.path.join(env.Dir("#").abspath, val)
-
 
 def validate_parent_dir(key, val, env):
     if not os.path.isdir(normalize_path(os.path.dirname(val), env)):
         raise UserError("'%s' is not a directory: %s" % (key, os.path.dirname(val)))
-
 
 libname = "gdexample"
 projectdir = "demo"
@@ -60,6 +57,8 @@ if env["platform"] == "macos":
     file = "{}.framework/{}".format(env["platform"], platlibname, platlibname)
 
 libraryfile = "bin/{}/{}".format(env["platform"], file)
+print("CCFLAGS: ", env['CCFLAGS'])
+
 library = env.SharedLibrary(
     libraryfile,
     source=sources,

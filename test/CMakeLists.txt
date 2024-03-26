@@ -30,7 +30,7 @@ include_directories(${DOCTEST_INCLUDE_DIR})
 ##############################
 ##### Find library files #####
 ##############################
-set(gdexample_DIR ${CMAKE_SOURCE_DIR}/../)
+set(gdexample_DIR ${CMAKE_SOURCE_DIR}/..)
 set(godot_cpp_DIR ${CMAKE_SOURCE_DIR}/../godot-cpp)
 
 if (UNIX)
@@ -112,14 +112,17 @@ target_include_directories(GDExample INTERFACE ${gdexample_DIR}/src)
 add_dependencies(GDExample Godot_CPP)
 include_directories(${gdexample_DIR}/src)
 
+get_target_property(GDEXAMPLE_INCLUDE_DIRS GDExample INTERFACE_INCLUDE_DIRECTORIES)
+message(STATUS "GDExample Include Directories: ${GDEXAMPLE_INCLUDE_DIRS}")
+
 #############################
 ##### Build test binary #####
 #############################
 add_executable(${PROJECT_NAME} ${CMAKE_SOURCE_DIR}/src/test_gdexample.cpp)
 target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_17)
 target_link_libraries(${PROJECT_NAME}
-    PUBLIC Godot_CPP
     PUBLIC GDExample
+    PUBLIC Godot_CPP
 )
 
 #####################
